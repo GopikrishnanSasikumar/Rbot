@@ -18,6 +18,9 @@ def log(message):
 
 def run_bot(sentence):
     """function to run the bot"""
+    sentence = sentence.replace("?", "").rstrip()
+    chars_to_remove = ['.', '!', '?']
+    #sentence = sentence.translate(None, ''.join(chars_to_remove)).rstrip()
     intent = action_predict(str(sentence))
     #log(intent)
     reply = dsl_protocol(intent, sentence)
